@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Developer</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #360457;
+            min-height: 100vh;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        /* HEADER */
+        header {
+            text-align: center;
+            padding: 30px;
+        }
+
+        header h1 {
+            font-size: 40px;
+            color: white;
+        }
+
+        /* MAIN SECTION */
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            padding: 40px;
+        }
+
+        /* IMAGE LEFT */
+        .image-box {
+            width: 450px;
+        }
+
+        .image-box img {
+            width: 100%;
+            animation: imgAnimation 3s ease-in-out infinite;
+        }
+
+        /* TEXT RIGHT */
+        .content {
+            width: 45%;
+        }
+
+        .content h2 {
+            font-size: 38px;
+            color: #d68aff;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #eeeeee;
+        }
+
+        button {
+            margin-left: 1100px;
+            background-color: #5d128b;
+            width: 80px;
+            height: 50px;
+            border-radius: 20px;
+            font-size: x-large;
+        }
+
+        button:hover {
+            background: #bb00ff;
+            box-shadow:0 0 10px #bb00ff,
+                0 0 25px #bb00ff,
+                0 0 50px #bb00ff;
+            transform:translateY(-5px);
+        }
+
+        a {
+            color: #eeeeee;
+        }
+
+        @keyframes imgAnimation {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+                filter: drop-shadow(0 0 5px #a020f0);
+            }
+
+            50% {
+                transform: translateY(-25px) scale(1.05);
+                filter: drop-shadow(0 0 30px #bb00ff);
+            }
+        }
+
+        /* MOBILE */
+        @media(max-width: 700px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .image-box,
+            .content {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1><span id="typing"></span></h1>
+    </header>
+    <br>
+    <script>
+        const words = [
+            "WED DEVELOPER",
+            "THE HTML OR CSS WEBSITE",
+            " ALL HTML TASKS",
+        ];
+
+        let wordIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+
+        function typeEffect() {
+            const typing = document.getElementById("typing");
+            const word = words[wordIndex];
+            typing.textContent = deleting
+                ? word.substring(0, charIndex--)
+                : word.substring(0, charIndex++);
+
+            let speed = deleting ? 60 : 110;
+
+            if (!deleting && charIndex === word.length + 1) {
+                deleting = true;
+                speed = 1000;
+            }
+
+            if (deleting && charIndex < 0) {
+                deleting = false;
+                charIndex = 0;
+                wordIndex = (wordIndex + 1) % words.length;
+            }
+
+            setTimeout(typeEffect, speed);
+        }
+
+        typeEffect();
+    </script>
+    <br> 
+    <br>
+    <div class="container">
+
+        <!-- LEFT IMAGE -->
+        <div class="image-box">
+            <img src="/asset/image/Screenshot 2026-10-11 154849.png" alt="HTML CSS JavaScript">
+        </div>
+
+        <!-- RIGHT TEXT -->
+        <div class="content">
+            <h2>Welcome To My Website</h2>
+
+            <p>
+                Hello! I am a Web Developer.
+                I create beautiful websites using
+                HTML, CSS and JavaScript.
+
+                <br><br>
+
+                Welcome to my creative world!
+                Here I share my web development
+                projects and coding skills.
+            </p>
+            <br>
+            <br>
+            <p>
+                  see my html or css project
+            </p>
+        </div>
+
+    </div>
+    <button><a href="/index2.html">NEST </a></button>
+</body>
+
+</html>
